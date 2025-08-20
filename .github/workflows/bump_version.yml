@@ -6,53 +6,25 @@ on:
     branches:
       - master
     types:
-      - labeled
-      - unlabeled
-      - opened
-      - reopened
       - closed
-      - synchronize
 
 env:
   PR_LABELS: ${{ toJson(github.event.pull_request.labels) }}
 
 jobs:
-  check-version:
-    runs-on: ubuntu-latest
-    permissions:
-      contents: read
-    outputs:
-      new_version: ${{ steps.check.outputs.new_version }}
-    steps:
-      - name: Checkout repository
-        id: checkout
-        uses: actions/checkout@v5
-
-      - name: Fetch tags
-        id: fetch
-        run: git fetch --depth=1 --tags
-
-      - name: Check version
-        id: check
-        run: .github/scripts/check_version.sh
-
   bump-version:
     if: ${{ github.event.pull_request.merged }}
-    needs: check-version
     runs-on: ubuntu-latest
     permissions:
       contents: write
+    outputs:
+      new_version: ${{ steps.check.outputs.new_version }}
     steps:
       - name: Checkout
-        id: checkout
         uses: actions/checkout@v5
 
       - name: Fetch tags
-        id: fetch
         run: git fetch --depth=1 --tags
 
       - name: Bump version
-        id: bump
-        env:
-          NEW_VERSION: ${{ needs.check-version.outputs.new_version }}
         run: .github/scripts/bump_version.sh

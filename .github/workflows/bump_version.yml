@@ -10,6 +10,7 @@ on:
       - opened
       - reopened
       - closed
+      - synchronize
 
 env:
   PR_LABELS: ${{ toJson(github.event.pull_request.labels) }}

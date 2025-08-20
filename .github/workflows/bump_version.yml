@@ -1,0 +1,30 @@
+---
+name: Bump version
+
+on:
+  pull_request:
+    branches:
+      - master
+    types:
+      - closed
+
+env:
+  PR_LABELS: ${{ toJson(github.event.pull_request.labels) }}
+
+jobs:
+  bump-version:
+    if: ${{ github.event.pull_request.merged }}
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    outputs:
+      new_version: ${{ steps.check.outputs.new_version }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v5
+
+      - name: Fetch tags
+        run: git fetch --depth=1 --tags
+
+      - name: Bump version
+        run: .github/scripts/bump_version.sh

@@ -18,6 +18,8 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v5
+        with:
+          fetch-tags: true
 
       - name: Bump version
         run: .github/scripts/bump_version.sh

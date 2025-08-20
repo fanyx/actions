@@ -1,0 +1,25 @@
+---
+name: Bump version
+description: Bump version tag according to related PR labels
+author: Hendrik Boll
+
+on:
+  pull_request:
+    branches:
+      - master
+    types:
+      - closed
+
+jobs:
+  bump-version:
+    if: ${{ github.event.pull_request.merged }}
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      actions: write
+    steps:
+      - name: Checkout
+        uses: actions/checkout
+
+      - name: Bump version
+        run: ../scripts/bump_version.sh

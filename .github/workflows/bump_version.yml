@@ -5,6 +5,11 @@ on:
   pull_request:
     branches:
       - master
+    types:
+      - labeled
+      - opened
+      - reopened
+      - closed
 
 env:
   PR_LABELS: ${{ toJson(github.event.pull_request.labels) }}

@@ -33,6 +33,8 @@ bump_patch() {
 }
 
 echo "PR Labels: ${PR_LABELS}"
+echo "Bump Major? ${BUMP_MAJOR}"
+echo "Bump Minor? ${BUMP_MINOR}"
 
 if $BUMP_MAJOR; then
   bump_major

@@ -43,5 +43,8 @@ fi
 NEW_VERSION="${VERSION_PREFIX}${MAJOR_VERSION}.${MINOR_VERSION}.${PATCH_VERSION}"
 echo "New version tag: ${NEW_VERSION}"
 
+git config --local user.email "github-actions[bot]@users.noreply.github.com"
+git config --local user.name "Github Actions"
+
 git tag -m "" $NEW_VERSION $GITHUB_SHA
 git push origin $NEW_VERSION

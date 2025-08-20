@@ -35,9 +35,9 @@ bump_patch() {
 echo "Bump major version? - ${BUMP_MAJOR}"
 echo "Bump minor version? - ${BUMP_MINOR}"
 
-if [[ ! -z "$BUMP_MAJOR" ]]; then
+if $BUMP_MAJOR; then
   bump_major
-elif [[ ! -z "$BUMP_MINOR" ]]; then
+elif $BUMP_MINOR; then
   bump_minor
 else
   bump_patch

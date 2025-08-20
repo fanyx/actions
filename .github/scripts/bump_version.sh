@@ -32,8 +32,7 @@ bump_patch() {
   PATCH_VERSION="$((PATCH_VERSION + 1))"
 }
 
-echo "Bump major version? - ${BUMP_MAJOR}"
-echo "Bump minor version? - ${BUMP_MINOR}"
+echo "PR Labels: ${PR_LABELS}"
 
 if $BUMP_MAJOR; then
   bump_major

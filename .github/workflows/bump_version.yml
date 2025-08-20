@@ -16,8 +16,7 @@ jobs:
       contents: write
       actions: write
     env:
-      BUMP_MAJOR: ${{ github.event.pull_request.labels[0].name == 'major' }}
-      BUMP_MINOR: ${{ github.event.pull_request.labels[0].name == 'minor' }}
+      PR_LABELS: ${{ github.event.pull_request.labels }}
     steps:
       - name: Checkout
         uses: actions/checkout@v5

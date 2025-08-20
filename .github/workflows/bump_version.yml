@@ -5,10 +5,6 @@ on:
   pull_request:
     branches:
       - master
-    types:
-      - closed
-      - labeled
-      - opened
 
 env:
   PR_LABELS: ${{ github.event.pull_request.labels }}

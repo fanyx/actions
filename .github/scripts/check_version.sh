@@ -33,7 +33,11 @@ bump_patch() {
 }
 
 echo "PR Labels: ${PR_LABELS}"
+
+BUMP_MAJOR=$(jq 'any(.[].name == "major"; .)' <<< "$PR_LABELS")
 echo "Bump Major? ${BUMP_MAJOR}"
+
+BUMP_MINOR=$(jq 'any(.[].name == "minor"; .)' <<< "$PR_LABELS")
 echo "Bump Minor? ${BUMP_MINOR}"
 
 if $BUMP_MAJOR; then

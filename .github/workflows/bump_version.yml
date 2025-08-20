@@ -1,7 +1,5 @@
 ---
 name: Bump version
-description: Bump version tag according to related PR labels
-author: Hendrik Boll
 
 on:
   pull_request:

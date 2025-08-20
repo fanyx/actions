@@ -10,7 +10,7 @@ on:
       - labeled
 
 env:
-  PR_LABELS: ${{ github.event.pull_request.labels[*] }}
+  PR_LABELS: ${{ github.event.pull_request.labels }}
 
 jobs:
   check-version:
